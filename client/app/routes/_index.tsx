@@ -1,6 +1,8 @@
 import { gql } from "@apollo/client";
 import type { Route } from "./+types/_index";
 import { useQuery } from "@apollo/client/react";
+import { AddTodo } from "@components/todo/add-todo/add-todo.tsx";
+import { DeleteTodo } from "~/components/todo/delete-todo/delete-todo";
 
 export function meta(_args: Route.MetaArgs) {
   return [
@@ -26,16 +28,18 @@ export default function Index() {
   if (error) return <p>Errors: {error.message}</p>;
 
   const renderTasks = () => {
-    return data?.tasks?.map(task => {
+    return data?.tasks?.map(task => (
       <div key={task.id}>
-        {task.title}: {task.completed}
-      </div>;
-    });
+        <span>{task.title}</span>
+        <DeleteTodo id={task.id} />
+      </div>
+    ));
   };
 
   return (
     <div>
       <h1>Tasks</h1>
+      <AddTodo />
       {renderTasks()}
     </div>
   );
