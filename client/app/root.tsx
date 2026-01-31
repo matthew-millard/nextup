@@ -8,6 +8,7 @@ import {
 } from "react-router";
 import { ApolloProvider } from "@apollo/client/react";
 import { client } from "~/lib/apollo";
+import { Logo } from "~/components/shared/logo/logo";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -46,6 +47,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <ApolloProvider client={client}>
+      <header className="py-4">
+        <Logo />
+      </header>
       <Outlet />
     </ApolloProvider>
   );

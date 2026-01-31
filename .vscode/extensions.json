@@ -1,9 +1,0 @@
-{
-  "recommendations": [
-    "Shopify.ruby-lsp",
-    "graphql.vscode-graphql-syntax",
-    "bradlc.vscode-tailwindcss",
-    "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint"
-  ]
-}

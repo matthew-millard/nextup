@@ -1,46 +1,36 @@
-import { gql } from "@apollo/client";
-import type { Route } from "./+types/_index";
-import { useQuery } from "@apollo/client/react";
-import { AddTodo } from "@components/todo/add-todo/add-todo.tsx";
-import { DeleteTodo } from "~/components/todo/delete-todo/delete-todo";
+import { Button } from "~/components/shared/button/button";
+import { TaskList } from "~/components/task/task-list/task-list";
+import { PlusIcon } from "~/components/shared/icons/plus-icon";
 
-export function meta(_args: Route.MetaArgs) {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
+export function meta() {
+  return [{ title: "Nextup" }, { name: "description", content: "A todo app!" }];
 }
 
-const GET_TASKS = gql`
-  query GetTasks {
-    tasks {
-      id
-      title
-      completed
-    }
-  }
-`;
+// const DELETE_TASKS: TypedDocumentNode<DeleteTasksMutation, DeleteTasksMutationVariables> = gql`
+//   mutation DeleteTasks($ids: [ID!]!) {
+//     deleteTasks(ids: $ids) {
+//       id
+//     }
+//   }
+// `;
+
+// const COMPLETE_TASK: TypedDocumentNode<CompleteTaskMutation, CompleteTaskMutationVariables> = gql`
+//   mutation CompleteTask($id: ID!, $completed: Boolean!) {
+//     completeTask(id: $id, completed: $completed) {
+//       id
+//     }
+//   }
+// `;
 
 export default function Index() {
-  const { data, error, loading } = useQuery(GET_TASKS);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Errors: {error.message}</p>;
-
-  const renderTasks = () => {
-    return data?.tasks?.map(task => (
-      <div key={task.id}>
-        <span>{task.title}</span>
-        <DeleteTodo id={task.id} />
-      </div>
-    ));
-  };
-
   return (
-    <div>
-      <h1>Tasks</h1>
-      <AddTodo />
-      {renderTasks()}
+    <div className="min-h-screen bg-white">
+      <TaskList title="Today's Tasks" />
+      <div className="fixed bottom-6 right-6">
+        <Button size="lg" icon={<PlusIcon />}>
+          Add Task
+        </Button>
+      </div>
     </div>
   );
 }

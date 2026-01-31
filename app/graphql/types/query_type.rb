@@ -25,7 +25,7 @@ module Types
     field :tasks, [ Types::TaskType ], null: false
 
     def tasks
-      Task.all
+      Task.order(:created_at)
     end
   end
 end
