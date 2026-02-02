@@ -1,8 +1,71 @@
 # Omakase Ruby styling for Rails
 inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+AllCops:
+  Exclude:
+    - "db/schema.rb"
+    - "bin/**/*"
+    - "log/**/*"
+    - "node_modules/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+
+# ==============================================================================
+# Layout (formatting)
+# ==============================================================================
+
+Layout/CaseIndentation:
+  Enabled: true
+
+Layout/EmptyLineBetweenDefs:
+  Enabled: true
+
+Layout/EmptyLines:
+  Enabled: true
+
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: true
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: true
+
+Layout/EmptyLinesAroundMethodBody:
+  Enabled: true
+
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: true
+
+Layout/HeredocIndentation:
+  Enabled: true
+
+Layout/IndentationConsistency:
+  Enabled: true
+  EnforcedStyle: indented_internal_methods
+
+Layout/IndentationWidth:
+  Enabled: true
+
+Layout/LeadingCommentSpace:
+  Enabled: true
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+  EnforcedStyle: space
+
+Layout/TrailingEmptyLines:
+  Enabled: true
+
+Layout/TrailingWhitespace:
+  Enabled: true
+
+# ==============================================================================
+# Style (formatting-related)
+# ==============================================================================
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: comma

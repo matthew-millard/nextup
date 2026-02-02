@@ -31,11 +31,11 @@ export function TaskList({ title }: Props) {
   }
 
   const renderTaskItems = () => {
-    if (data?.tasks.length === 0) {
+    if (data?.tasks?.length === 0) {
       return <p className="text-zinc-700 italic">You currently have no tasks</p>;
     }
 
-    return data?.tasks.map((task, index) => {
+    return data?.tasks?.map((task, index) => {
       return (
         <TaskItem
           key={task.id}

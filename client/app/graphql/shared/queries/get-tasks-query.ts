@@ -3,7 +3,7 @@ import type { GetTasksQuery, GetTasksQueryVariables } from "~/graphql/types/__ge
 
 const GET_TASKS: TypedDocumentNode<GetTasksQuery, GetTasksQueryVariables> = gql`
   query GetTasks {
-    tasks {
+    getTasks {
       id
       title
       description

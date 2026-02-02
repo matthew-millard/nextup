@@ -21,10 +21,9 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
+    field :get_tasks, [ Types::TaskType ], null: false
 
-    field :tasks, [ Types::TaskType ], null: false
-
-    def tasks
+    def get_tasks
       Task.order(:created_at)
     end
   end
